@@ -1,6 +1,12 @@
 
-//question 1
-const User = {
+//Question 1
+
+//First step:create an object called user
+//Second step:pass the properties;name,stepsWalked(which is an array of daily steps)
+//Third step:create method totalStep() which calculates and return the total number of steps by iterating through the steps
+//Fourth step:create another method averageSteps() that will return the average steps per day
+
+const user = {
     name:"Queen",
     stepsWalked: [{day:"Monday",steps:300},{day:"Tuesday",steps:600}],
     totalSteps(){
@@ -17,9 +23,15 @@ const User = {
   return average
     }
 }
-console.log(User.totalSteps());
-console.log(User.averageSteps());
+console.log(user.totalSteps());
+console.log(user.averageSteps());
+
 //question 2
+
+//Fist step:create an object called Recipe with name, ingredients(array),cookTime in minutes
+//second step: create  a method displayRecipe()which will log the name and all ingredients in a readable list
+//Third step: create another method isQuickMeal() that will return true if cookTime is 30 minutes or less by iteration
+
 const Recipe = {
     name:"keza",
     ingredients:["salt","flour","vegetables","pepper"],
@@ -40,24 +52,39 @@ const Recipe = {
     }
 Recipe.displayRecipe()
 Recipe.isQuickMeal()
-//question3
-const Car={
-    model:"Range rover",
-    mileage:"11km per liter",
-    serviceHistory:["15th june","11th may","5th december"],
-    addService(date){
-        console.log(`This is a ${this.model} ${this.mileage} ${date}`)
-       return  this.serviceHistory=this.serviceHistory.push(date)
-    },
-    latestServiceDate(){
-            return this.serviceHistory.at(-1)
-    }
 
+//question3
+
+//First step:Create an object called a car
+//second step:The object will have properties of model,mileage, and serviceHistory(an array of service dates)
+//Third step: Create method addService having date as a parameter and we add a new service record
+//Fourth step: Create another method lastServiceDate() which will return the most recent service date
+
+const car={
+    model:"Range rover",
+    mileage: "10km per liter",
+    serviceHistory: ["20th june 2027", "1st january 2023","4th july 2004"],
+    addService : function(date){
+        console.log(`this is a ${this.model} ${this.mileage} ${date}`)
+        serviceHistory = this.serviceHistory.push(date)},
+    lastService : function(){
+        return this.serviceHistory.pop()
+    }
 }
-Car.addService("June 24th 2025")
-console.log(Car.latestServiceDate())
+car.addService("November 4th 2026")
+console.log(car.lastService())
+
+
+
 //question 4
-const Playlist ={
+
+//First step:Create an object of playlist with a property which is songs(array of song titles)
+//second step: Add method addSong(title) to add a song 
+//Third step: Add another method removeSong(title) to delete one song 
+//Fourth step: Add another method listSong() which will log all songs currently in the playlist
+
+
+const playlist ={
     songTitles:["on my way","Heal first","provider"],
     addSong(title){
         console.log(`I am adding new song called "${title}"`)
@@ -71,10 +98,16 @@ const Playlist ={
             console.log(this.songTitles[i])
     }
 }
-Playlist.addSong("Love")
-console.log(Playlist.removeSong())
-Playlist.listSongs()
+playlist.addSong("Love")
+console.log(playlist.removeSong())
+playlist.listSongs()
+
 //question 5
+
+//First method:create a course constructor with title, lesson(an array),completedLesson(array)
+//second method: Add a method called markComplete(lesson) that will add the lesson to completedLessons
+//Third method: Add a method getProgress() that will return a string  
+
 function Course(title,lessons,completedLessons){
     this.title = title;
     this.lessons=lessons;
@@ -86,7 +119,7 @@ function Course(title,lessons,completedLessons){
         console.log(`${completedLessons} out of ${lessons.length}completed lesson`)
     }
 }
-const course = new Course("Biology"["javascript","Kotlin","QA"]["Python","PM"])
+const course = new Course("Biology",["javascript","Kotlin","QA"],["Python","PM"])
 console.log(course)
 course.markcomplete(["java"])
 course.getProgress()
